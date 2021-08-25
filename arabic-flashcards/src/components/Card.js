@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import "../css/card.css";
 
 export default function Card() {
+ 
+  const [word, setWord] = useState (["hello", "أهلا"])
+ 
   return (
     <div>
-      <svg xmlns="http://www.w3.org/2000/svg" class="svg-filter">
+      <svg xmlns="http://www.w3.org/2000/svg" className="svg-filter">
         <defs>
           <filter id="noise">
             <feGaussianBlur
@@ -44,8 +47,8 @@ export default function Card() {
         <div className="shape noisy"></div>
         <div className="shape gradient">
           <div className="word-card-inner">
-            <div className="word-card-en"><span>books</span></div>
-            <div className="word-card-ar"><span>كلمات</span></div>
+            <div className="word-card-en"><span>{word[0]}</span></div>
+            <div className="word-card-ar"><span>{word[1]}</span></div>
           </div>
         </div>
       </div>

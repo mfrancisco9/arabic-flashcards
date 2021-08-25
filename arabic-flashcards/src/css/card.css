@@ -52,6 +52,10 @@
     perspective: 1000px;
 }
 
+.word-card:hover {
+    cursor: pointer;
+}
+
 .word-card-inner {
     position: relative;
     width: 100%;

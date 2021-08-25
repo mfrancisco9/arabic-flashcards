@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+DW+Pica&family=Lateef&display=swap');
+
+#footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(249, 211, 180, .8);
+    color: #F8f4f2;
+    height: 3%;
+    font-size: 1.25em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    font-family: 'IM Fell DW Pica', serif;
+    padding-left: .5%;
+    text-shadow:1px 1px rgba(14, 8, 7, .7);
+    text-decoration: none;
+    
+}
+
+
+#location {
+    text-decoration: none;
+}
+
+#location a{
+    text-decoration: none;
+    color: #F8F4F2;
+}
+
+#location a:hover {
+    color: #2AB2B7;
+}
