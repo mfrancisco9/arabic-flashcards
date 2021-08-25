@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+DW+Pica&family=Lateef&display=swap');
+
+:root {
+    --orange: 238, 133, 47;
+    --orange-light: 241, 155, 85;
+    --white: 248, 244, 242;
+    --brown: 43, 25, 21;
+    --brown-dark: 14, 8, 7;
+    --teal: 30, 131, 134;
+    --teal-light: 42, 178, 183;
+    --mint: 224, 245, 239;
+    --pink: 233, 214, 216;
+
+    --bg: #1d122f;
+	--fg: #f9d3b4;
+	--fg-alpha: #ffe4c200;
+	--ac: #EE852F;
+}
+
+
+.word-card-ar, .word-card-en {
+    font-size: 6em;
+    color: rgba(var(--white));
+    text-shadow: 3px 5px rgba(var(--orange), 1);
+}
+
+.card-word-en {
+    font-family: 'IM Fell DW Pica', serif;
+}
+
+.card-word-ar {
+    font-family: 'Lateef', cursive;
+}
+
+.svg-filter {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+}
+
+.word-card {
+	position: relative;
+	overflow: hidden;
+	width: 450px;
+	height: 300px;
+    background: var(--ac, rgba(var(--orange)));
+    filter: blur(0.33px);
+    border-radius: 1px 6px 2px 6px;
+    border-bottom: 3px solid rgba(var(--pink), .66);
+    border-right: 3px solid rgba(var(--pink), .66);
+    perspective: 1000px;
+}
+
+.word-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.word-card:hover .word-card-inner {
+    transform: rotateY(180deg);
+}
+
+.word-card-en, .word-card-ar {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.word-card-ar {
+    transform: rotateY(180deg);
+}
+.shape {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: var(--fg, white);
+}
+
+.gradient { 
+	background: radial-gradient(circle at 100% 100%, var(--fg, white) 5%, 15%, var(--fg-alpha, transparent) 50%);
+}
+
+.noisy {
+	border-radius: 50%; 
+	filter: url("#noise");
+}
+
