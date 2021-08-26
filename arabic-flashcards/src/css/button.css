@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+DW+Pica&family=Lateef&display=swap');
+
+
+.nav-button {
+    border-radius: none;
+    border: none;
+    background-color: none;
+    background: none;
+    font-size: 80px;
+    font-family: 'Lafeef', serif;
+    color: rgba(238, 133, 47);
+    -webkit-text-stroke-width: 3px;
+    -webkit-text-stroke-color: rgba(238, 133, 47);
+    text-shadow: 2px 4px 1px rgba(248, 244, 242, .5)
+    
+}
+
+.nav-button:hover {
+    -webkit-text-stroke-width: 5px;
+    -webkit-text-stroke-color: rgba(241, 155, 85)
+}

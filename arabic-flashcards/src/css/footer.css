@@ -12,9 +12,10 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-between;
     font-family: 'IM Fell DW Pica', serif;
-    padding-left: .5%;
+    /* padding-left: .5%;
+    padding-right: .5%; */
     text-shadow:1px 1px rgba(14, 8, 7, .7);
     text-decoration: none;
     
@@ -32,4 +33,20 @@
 
 #location a:hover {
     color: #2AB2B7;
+}
+
+#location, #michael, #add {
+    width: 33.3%;
+}
+
+#location {
+    text-align: start;
+}
+
+#michael {
+    text-align: center;
+}
+
+#add {
+    text-align: end;
 }

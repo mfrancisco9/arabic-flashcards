@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../css/card.css";
 
-export default function Card() {
+export default function Card(props) {
  
   const [word, setWord] = useState (["hello", "أهلا"])
  
@@ -47,8 +47,8 @@ export default function Card() {
         <div className="shape noisy"></div>
         <div className="shape gradient">
           <div className="word-card-inner">
-            <div className="word-card-en"><span>{word[0]}</span></div>
-            <div className="word-card-ar"><span>{word[1]}</span></div>
+            <div className="word-card-en"><span>{props.english}</span></div>
+            <div className="word-card-ar"><span>{props.arabic}</span></div>
           </div>
         </div>
       </div>
