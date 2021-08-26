@@ -1,7 +1,39 @@
-import React from "react";
+import axios from "axios";
+import React, { useState } from "react";
 import "../css/card.css";
 
 export default function AddCard(props) {
+  const [newWord, setNewWord] = useState({
+    en: "",
+    ar: "",
+    pw: ""
+  })
+
+  const password = "learningisfun"
+
+  const addWord = () => {
+    if (newWord.pw === password) {
+    axios({
+      method: 'POST',
+      url: '/api/cards/newcard',
+      data: {
+        en: newWord.en,
+        ar: newWord.ar
+      }
+    }).then((success) => {
+      alert("Word Added")
+    }).catch((err) => {
+      console.log("Error adding card")
+      if (err) {
+        console.log(err)
+      }
+    })
+  } else {
+    console.log("wrong password")
+  }
+  }
+
+
   return (
     <div>
       <svg xmlns="http://www.w3.org/2000/svg" className="svg-filter">
@@ -43,15 +75,21 @@ export default function AddCard(props) {
       <div className="word-card">
         <div className="shape noisy"></div>
         <div className="shape gradient add-card-body">
-          <input className="new-word-field" placeholder="english word"></input>
-          <input className="new-word-field" placeholder="arabic word"></input>
+          <input className="new-word-field" placeholder="english word"
+                        onChange={(e) => setNewWord({...newWord, en: e.target.value})}
+                        ></input>
+          <input className="new-word-field" placeholder="arabic word"
+                        onChange={(e) => setNewWord({...newWord, ar: e.target.value})}
+                        ></input>
 
           <div id="password-row">
             <input
+            type="password"
               className="password-field"
               placeholder="special code"
+              onChange={(e) => setNewWord({...newWord, pw: e.target.value})}
             ></input>
-            <button className="add-word-button">add</button>
+            <button className="add-word-button" onClick={() => addWord()}>add</button>
           </div>
         
         </div>

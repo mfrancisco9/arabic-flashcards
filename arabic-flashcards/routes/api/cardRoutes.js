@@ -29,5 +29,20 @@ router.get("/:id", async (req, res) => {
     }
   });
 
+  // create a card
+
+  router.post("/newcard", async (req, res) => {
+    console.log('show create route hit')
+    try {
+      const cardData = await Card.create(req.body);
+  
+      console.log("card create hit: ", cardData)
+  
+      res.status(200).json(cardData);
+    } catch (err) {
+      res.status(400).json(err);
+    }
+  });
+
 
 module.exports = router;
