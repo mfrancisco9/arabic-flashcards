@@ -10,6 +10,7 @@ import Ramallah from "../../images/ramallah-osmar-valdebenito.jpg";
 import Haraz from "../../images/haraz.jpg";
 import Abha from "../../images/abha.jpg";
 import Amman from "../../images/amman.jpg"
+import axios from 'axios';
 
 export default function Home() {
 
@@ -51,19 +52,64 @@ export default function Home() {
         photographer: "Jo Kassis",
         photographer_url: "https://www.pexels.com/@jokassis"
     });
-    const [word, setWord] = useState(["apple", "تفاح"])
+    const [word, setWord] = useState({
+        id: 1, 
+        en: "bottle",
+        ar: "زجاجة"
+    })
+    const [numWords, setNumWords] = useState(1)
+
+    var wordsLength = 0;
+
+    const nextWord = () => {
+        if (word.id < numWords) {
+        axios.get("/api/cards/" + (word.id + 1)).then((data) => {
+            console.log(data.data)
+            setWord(data.data)
+        }) 
+    } else if (word.id === numWords) {
+        axios.get("/api/cards/" + (1)).then((data) => {
+            console.log(data.data)
+            setWord(data.data)
+        }) 
+    }
+    }
+
+    const prevWord = () => {
+        if (word.id > 1) {
+        axios.get("/api/cards/" + (word.id - 1)).then((data) => {
+            console.log(data.data)
+            setWord(data.data)
+        }) 
+        
+    }
+    else if (word.id === 1) {
+        axios.get("/api/cards/" + (numWords)).then((data) => {
+            console.log(data.data)
+            setWord(data.data)
+        }) 
+    }
+    }
  
     useEffect(() => {
         let index = Math.floor(Math.random() * backgrounds.length);
-        console.log(index);
         setPhotoDetails(backgrounds[index])
         document.documentElement.style.setProperty('--bg-url', `url(${backgrounds[index]['url']})`)
+
+        axios.get("/api/cards/").then((data) => {
+            setNumWords(data.data.length)
+            
+        }) 
     }, [])
 
     return <div id="home-body">
-        <Button text="<" />
-        <Card english={word[0]} arabic={word[1]}/>
-        <Button text =">" />
+        <Button text="<" 
+        btnClick={() => prevWord()} />
+        <Card english={word.en} arabic={word.ar}/>
+        <Button 
+        text =">" 
+        btnClick={() => nextWord()}
+        />
          <Footer 
          photographer_url={photoDetails.photographer_url}
          photographer={photoDetails.photographer}
