@@ -10,7 +10,7 @@ return (
 
     <span id="michael">michael francisco 2021</span>
 
-    <span id="add">add words</span>
+    <span id="add" onClick={props.addClick}>toggle add mode</span>
     
     </footer>
 

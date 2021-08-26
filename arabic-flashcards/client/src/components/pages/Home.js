@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
+import axios from 'axios';
 import '../../css/home.css'
 import Card from '../Card';
+import AddCard from '../AddCard';
 import Footer from '../Footer';
 import Button from '../Button';
 
@@ -10,7 +12,6 @@ import Ramallah from "../../images/ramallah-osmar-valdebenito.jpg";
 import Haraz from "../../images/haraz.jpg";
 import Abha from "../../images/abha.jpg";
 import Amman from "../../images/amman.jpg"
-import axios from 'axios';
 
 export default function Home() {
 
@@ -58,9 +59,10 @@ export default function Home() {
         ar: "زجاجة"
     })
     const [numWords, setNumWords] = useState(1)
+    const [addToggle, setAddToggle] = useState(false)
 
-    var wordsLength = 0;
 
+// functions for moving forward + backwards through stack
     const nextWord = () => {
         if (word.id < numWords) {
         axios.get("/api/cards/" + (word.id + 1)).then((data) => {
@@ -74,7 +76,6 @@ export default function Home() {
         }) 
     }
     }
-
     const prevWord = () => {
         if (word.id > 1) {
         axios.get("/api/cards/" + (word.id - 1)).then((data) => {
@@ -91,6 +92,8 @@ export default function Home() {
     }
     }
  
+
+
     useEffect(() => {
         let index = Math.floor(Math.random() * backgrounds.length);
         setPhotoDetails(backgrounds[index])
@@ -103,16 +106,22 @@ export default function Home() {
     }, [])
 
     return <div id="home-body">
-        <Button text="<" 
+
+{ addToggle ?  <AddCard /> :
+      <div className="card-controls-row">
+      <Button text="<" 
         btnClick={() => prevWord()} />
         <Card english={word.en} arabic={word.ar}/>
         <Button 
         text =">" 
         btnClick={() => nextWord()}
         />
+</div>
+}
          <Footer 
          photographer_url={photoDetails.photographer_url}
          photographer={photoDetails.photographer}
-         location={photoDetails.image} />
+         location={photoDetails.image}
+         addClick={() => setAddToggle(!addToggle)} />
     </div>
 }

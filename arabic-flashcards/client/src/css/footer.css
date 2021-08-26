@@ -8,15 +8,15 @@
     background-color: rgba(249, 211, 180, .8);
     color: #F8f4f2;
     height: 3%;
-    font-size: 1.25em;
+    font-size: 1em;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    font-family: 'IM Fell DW Pica', serif;
+    font-family: 'Arial', 'serif';
     /* padding-left: .5%;
     padding-right: .5%; */
-    text-shadow:1px 1px rgba(14, 8, 7, .7);
+    text-shadow:1px 1px rgba(14, 8, 7, .75);
     text-decoration: none;
     
 }
@@ -49,4 +49,8 @@
 
 #add {
     text-align: end;
+}
+
+#add:hover{
+    cursor: pointer;
 }

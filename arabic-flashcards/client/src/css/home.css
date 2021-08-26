@@ -14,3 +14,8 @@
     background-repeat: no-repeat;
     box-shadow: inset 0 0 0 1000px rgba(233, 214, 216, .6);
 }
+
+.card-controls-row {
+    display: flex;
+    flex-direction: row;
+}

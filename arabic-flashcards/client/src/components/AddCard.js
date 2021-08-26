@@ -1,8 +1,7 @@
 import React from "react";
 import "../css/card.css";
 
-export default function Card(props) {
-  
+export default function AddCard(props) {
   return (
     <div>
       <svg xmlns="http://www.w3.org/2000/svg" className="svg-filter">
@@ -43,11 +42,18 @@ export default function Card(props) {
 
       <div className="word-card">
         <div className="shape noisy"></div>
-        <div className="shape gradient">
-          <div className="word-card-inner">
-            <div className="word-card-en"><span>{props.english}</span></div>
-            <div className="word-card-ar"><span>{props.arabic}</span></div>
+        <div className="shape gradient add-card-body">
+          <input className="new-word-field" placeholder="english word"></input>
+          <input className="new-word-field" placeholder="arabic word"></input>
+
+          <div id="password-row">
+            <input
+              className="password-field"
+              placeholder="special code"
+            ></input>
+            <button className="add-word-button">add</button>
           </div>
+        
         </div>
       </div>
     </div>
